@@ -37,3 +37,8 @@ You can use env variables for all parameters or some of them
 ```bash
 node ./update-library-version.js -u edward-fedoruk -p ATBBE96JaBwQSvA2Zk9CuEZeKbT3EDD27C96 -w redocly-package-test -r redocly-package-test -pkg '@redocly/cli' -v 'latest'
 ```
+
+### Test
+```bash
+npm run test
+```
