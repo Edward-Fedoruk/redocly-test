@@ -20,9 +20,17 @@ describe('update-library-version', () => {
     expect(updatedPackage).toStrictEqual({ "dependencies": {"testPackage": "2.2.2"} })
   })
 
-  xit('should handle dependency with ~', () => {
-  })
+  it('should exit if version is already up to date', () => {
+    process.exit = jest.fn()
 
-  xit('should handle dependency with ^', () => {
+    const npmPackage = 'testPackage'
+
+    updatePackage({ 
+      dependencies: {
+        [npmPackage]: '1.2.3'
+      } 
+    }, npmPackage, '1.2.3')
+
+    expect(process.exit).toBeCalled()
   })
 })

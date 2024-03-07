@@ -1,6 +1,5 @@
 const axios = require('axios');
 const { Command } = require('commander');
-
 /*
   USAGE EXAMPLE:
     node ./update-library-version.js -u edward-fedoruk -p ATBBE96JaBwQSvA2Zk9CuEZeKbT3EDD27C96 -w redocly-package-test -r redocly-package-test -pkg '@redocly/cli' -v 'latest'
@@ -38,16 +37,21 @@ const bitbucketApi = axios.create({
 const basePath = `repositories/${CLI_OPTIONS.workspace}/${CLI_OPTIONS.repoSlug}`
 
 const updatePackage = (packageJson, packageName, version) => {
-  // TODO: Would be nice to also update .lock file somehow
-  // TODO: Cases when package has been already update 
+  // TODO: Would be nice to also update .lock file
   // TODO: handle package with Caret(^) and Tilde(~) other cases
   // we can use semver lib to handle package update
+  // TODO: Would be nice to validate if version number is correct 
 
   if (!packageJson?.dependencies?.[packageName] && !packageJson?.devDependencies?.[packageName]) process.exit()
 
   const dependencies = packageJson?.dependencies?.[packageName] 
     ? packageJson.dependencies
     : packageJson.devDependencies
+
+  if (dependencies[packageName] === version) {
+    console.info(`${packageName}: is already updated`)
+    process.exit()
+  }
 
   dependencies[packageName] = version;
   
