@@ -1,4 +1,4 @@
-# Bitbucket Library Version Updater
+# Bitbucket Version Updater
 
 ## Overview
 
