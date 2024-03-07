@@ -25,6 +25,7 @@ npm install
 - -v, --version <string>: The new version for the npm package.
 
 ## Environment variables
+or you can use env variables for all parameters or some of them
 - USER_NAME='user'
 - PASSWORD='ASDF2E1QD1'
 - WORKSPACE='workspace'
