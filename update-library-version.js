@@ -65,7 +65,7 @@ const getMainBranchName = async () => {
 };
 
 const getJsonFile = async (branch) => {
-  // TODO: package.json could be not in the roo. What if monorepo learna/turborepo
+  // TODO: package.json could be not in the root. What if monorepo learna/turborepo
   const packageJsonPath = `${basePath}/src/${branch}/package.json`;
   const { data: packageJson } = await bitbucketApi.get(packageJsonPath)
 
